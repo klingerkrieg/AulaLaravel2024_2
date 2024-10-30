@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', [BookController::class, "index"])->name('new');
 Route::get('/form', [BookController::class, "index"])->name('new');
 Route::post('/form', [BookController::class, "save"])->name('save');
-
+Route::get('/form/{book}', [BookController::class, "edit"])->name('edit');
+Route::put('/form/{book}', [BookController::class, "update"])->name('update');
+Route::get('/form/delete/{book}', [BookController::class, "delete"])->name('delete');
 
 
 
